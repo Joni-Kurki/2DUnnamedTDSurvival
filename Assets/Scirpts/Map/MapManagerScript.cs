@@ -9,10 +9,11 @@ public class MapManagerScript : MonoBehaviour
     public int _chunkHeightAndWidth;
 
     public MapChunkData [,] _mapChunks;
+    public GameObject [,] _mapChunkControllers;
 
     public GameObject _mapChunkPrefab;
 
-    private SpriteLibraryScript _sLib;
+    public SpriteLibraryScript _sLib;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,9 @@ public class MapManagerScript : MonoBehaviour
             _chunkHeightAndWidth++;
 
         _mapChunks = new MapChunkData[_chunkHeightAndWidth, _chunkHeightAndWidth];
+        _mapChunkControllers = new GameObject[_chunkHeightAndWidth, _chunkHeightAndWidth];
 
-        for(int x = 0; x < _chunkHeightAndWidth; x++)
+        for (int x = 0; x < _chunkHeightAndWidth; x++)
         {
             for (int y = 0; y < _chunkHeightAndWidth; y++)
             {
@@ -37,19 +39,24 @@ public class MapManagerScript : MonoBehaviour
             for (int y = 0; y < _chunkHeightAndWidth; y++)
             {
                 var go = Instantiate(_mapChunkPrefab, new Vector3Int(_mapChunks[x, y]._x, _mapChunks[x, y]._y, 0), Quaternion.identity, transform);
+                var chunkController = go.GetComponent<MapChunkController>()._chunkData = _mapChunks[x, y];
 
+                _mapChunkControllers[x, y] = go;
 
-                if(x == 0 || y == 0 || x == _chunkHeightAndWidth -1 || y == _chunkHeightAndWidth - 1)
+                if (x == 0 || y == 0 || x == _chunkHeightAndWidth -1 || y == _chunkHeightAndWidth - 1)
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.MonsterSpawner);
+                    _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.MonsterSpawner);
                 }
                 else if(x == _chunkHeightAndWidth / 2 && y == _chunkHeightAndWidth / 2)
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.Initial);
+                    _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.Initial);
                 }
                 else
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.Empty_Buildable);
+                    _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.Empty_Buildable);
                 }
             }
         }
@@ -59,5 +66,15 @@ public class MapManagerScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public MapChunkData GetChunkAt(int x, int y)
+    {
+        return _mapChunks[x, y];
+    }
+
+    public GameObject GetMapChunkControllerAt(int x, int y)
+    {
+        return _mapChunkControllers[x, y];
     }
 }

@@ -12,44 +12,50 @@ public class ChunkBuilderScript : MonoBehaviour
 
     const float MOUSE_OFFSET = 0;
 
+    MapManagerScript _map;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isEnabled && _validBuild)
+        if (_map != null && _isEnabled)
         {
-            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0, .8f);
-
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            transform.position = new Vector3(Mathf.RoundToInt(point.x + MOUSE_OFFSET), Mathf.RoundToInt(point.y + MOUSE_OFFSET), 0);
-        }
-        else if(_isEnabled && !_validBuild)
-        {
-            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, .8f);
+            var x = Mathf.RoundToInt(point.x);
+            var y = Mathf.RoundToInt(point.y);
 
-            var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(Mathf.RoundToInt(x), Mathf.RoundToInt(y), 0);
 
-            transform.position = new Vector3(Mathf.RoundToInt(point.x + MOUSE_OFFSET), Mathf.RoundToInt(point.y + MOUSE_OFFSET), 0);
-        }
-        else if(!_isEnabled)
-        {
-            GetComponent<SpriteRenderer>().color = Color.clear;
-        }
+            // If mouse is within game area
+            if (x >= 0 && y >= 0 && x < _map._chunkHeightAndWidth && y < _map._chunkHeightAndWidth)
+            {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
+                var chunk = _map.GetChunkAt(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y));
 
-        }
+                // Check chunks type
+                if (chunk._chunkType == Enums.MapChunkType.Initial || chunk._chunkType == Enums.MapChunkType.MonsterSpawner)
+                {
+                    _validBuild = false;
+                }
+                else if(chunk._chunkType == Enums.MapChunkType.Empty_Buildable)
+                {
+                    _validBuild = true;
+                }
 
-        // TODO for test
-        if (Input.GetKeyDown(KeyCode.Mouse1)){
-            _validBuild = !_validBuild;
+                // If can build
+                if (Input.GetKeyDown(KeyCode.Mouse0) && _validBuild && chunk != null)
+                {
+                    var go = _map.GetMapChunkControllerAt(x, y);
+                    go.GetComponent<SpriteRenderer>().sprite = _map._sLib.GetSpriteByIndex((int)Enums.MapChunkType.Initial);
+                    go.GetComponent<MapChunkController>()._chunkData._chunkType = Enums.MapChunkType.Initial;
+                }
+            }
         }
     }
 }

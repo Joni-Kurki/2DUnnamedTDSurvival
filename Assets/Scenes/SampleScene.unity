@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 1080291242}
   m_Layer: 0
   m_Name: MapManager
-  m_TagString: Untagged
+  m_TagString: MapManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   _chunkHeightAndWidth: 9
   _mapChunkPrefab: {fileID: 2517487099124613707, guid: 2bec298a83bce9f40bc6daabfe3a2ab2,
     type: 3}
+  _sLib: {fileID: 0}
 --- !u!4 &1080291243
 Transform:
   m_ObjectHideFlags: 0

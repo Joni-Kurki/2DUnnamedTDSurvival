@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpriteLibrary
   - ChunkBuilder
+  - MapManager
   layers:
   - Default
   - TransparentFX

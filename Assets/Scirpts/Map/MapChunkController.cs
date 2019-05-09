@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MapChunkController : MonoBehaviour
 {
+
+    public MapChunkData _chunkData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class MapChunkController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetChunkData(MapChunkData chunkData)
+    {
+        _chunkData = chunkData;
     }
 }
