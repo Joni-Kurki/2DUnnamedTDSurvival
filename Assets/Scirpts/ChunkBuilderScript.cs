@@ -17,7 +17,7 @@ public class ChunkBuilderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();   
+        _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();     
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class ChunkBuilderScript : MonoBehaviour
     {
         if (_map != null && _isEnabled)
         {
+            Cursor.visible = false;
+
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             var x = Mathf.RoundToInt(point.x);
@@ -39,7 +41,7 @@ public class ChunkBuilderScript : MonoBehaviour
                 var chunk = _map.GetChunkAt(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y));
 
                 // Check chunks type
-                if (chunk._chunkType == Enums.MapChunkType.Initial || chunk._chunkType == Enums.MapChunkType.MonsterSpawner)
+                if (chunk._chunkType != Enums.MapChunkType.Empty_Buildable)
                 {
                     _validBuild = false;
                 }
@@ -56,6 +58,13 @@ public class ChunkBuilderScript : MonoBehaviour
                     go.GetComponent<MapChunkController>()._chunkData._chunkType = Enums.MapChunkType.Initial;
                 }
             }
+
+            if (_validBuild)
+                transform.GetComponent<SpriteRenderer>().material.color = new Color(0, 225, 0, .7f);
+            else
+                transform.GetComponent<SpriteRenderer>().material.color = new Color(225, 0, 0, .7f);
         }
+        if(!_isEnabled)
+            Cursor.visible = true;
     }
 }
