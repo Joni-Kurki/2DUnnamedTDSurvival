@@ -25,7 +25,6 @@ public class ChunkBuilderScript : MonoBehaviour
     {
         if (_map != null && _isEnabled)
         {
-            Cursor.visible = false;
 
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -64,7 +63,13 @@ public class ChunkBuilderScript : MonoBehaviour
             else
                 transform.GetComponent<SpriteRenderer>().material.color = new Color(225, 0, 0, .7f);
         }
-        if(!_isEnabled)
-            Cursor.visible = true;
+    }
+
+    void OnDisable() {
+        Cursor.visible = true;
+    }
+
+    void OnEnable() {
+        Cursor.visible = false;
     }
 }
