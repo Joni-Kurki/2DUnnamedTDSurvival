@@ -9,4 +9,9 @@
         Empty_NotBuildable = 3,
     }
 
+    public enum MapTileType {
+        Empty = 0,
+        Struture = 1
+    }
+
 }

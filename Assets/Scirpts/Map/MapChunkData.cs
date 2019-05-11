@@ -6,6 +6,9 @@
 
     public Enums.MapChunkType _chunkType { get; set; }
 
+    public int _maxNumberOfTotalStructures { get; set; }
+    public int _maxNumberOfWarStructures{ get;set; }
+
     public MapChunkData(int x, int y)
     {
         _x = x;

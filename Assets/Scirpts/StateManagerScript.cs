@@ -11,11 +11,13 @@ public class StateManagerScript : MonoBehaviour
     public bool _isZoomedToChunk = false;
 
     ChunkBuilderScript _builder;
+    CameraMoverScript _camera;
 
     // Start is called before the first frame update
     void Start()
     {
         _builder = GameObject.FindGameObjectWithTag(Constants.TAG_CHUNK_BUILDER).GetComponent<ChunkBuilderScript>();
+        _camera = GameObject.FindGameObjectWithTag(Constants.TAG_MAIN_CAMERA).GetComponent<CameraMoverScript>();
     }
 
     // Update is called once per frame
@@ -36,5 +38,6 @@ public class StateManagerScript : MonoBehaviour
 
     private void SetBuilderEnabled(bool enabled) {
         _builder.gameObject.SetActive(enabled);
+        _camera.SetInitialPosition();
     }
 }

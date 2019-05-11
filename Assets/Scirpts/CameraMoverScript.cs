@@ -26,7 +26,7 @@ public class CameraMoverScript : MonoBehaviour
         
     }
 
-    void SetInitialPosition() {
+    public void SetInitialPosition() {
         var xy = _map._chunkHeightAndWidth / 2;
 
         transform.position = new Vector3(xy, xy, -10);
