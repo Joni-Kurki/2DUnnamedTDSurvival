@@ -25,7 +25,6 @@ public class ChunkBuilderScript : MonoBehaviour
     {
         if (_map != null && _isEnabled)
         {
-
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             var x = Mathf.RoundToInt(point.x);
@@ -58,6 +57,7 @@ public class ChunkBuilderScript : MonoBehaviour
                 }
             }
 
+            // Cursor color
             if (_validBuild)
                 transform.GetComponent<SpriteRenderer>().material.color = new Color(0, 225, 0, .7f);
             else

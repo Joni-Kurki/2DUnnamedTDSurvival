@@ -41,6 +41,13 @@ public class MapChunkController : MonoBehaviour
                     SetTileToStructureAt(rX, rY, Enums.StructureType.Spawner);
             }
             _tilesUpdated = true;
+        } else if (_chunkData != null && _chunkData._chunkType == Enums.MapChunkType.Initial && !_tilesUpdated) {
+            var rX = Random.Range(0, 3);
+            var rY = Random.Range(0, 3);
+
+            SetTileToStructureAt(rX, rY, Enums.StructureType.Warfare);
+
+            _tilesUpdated = true;
         }
     }
 

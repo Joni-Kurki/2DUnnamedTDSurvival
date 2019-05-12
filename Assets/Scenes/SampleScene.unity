@@ -540,10 +540,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chunkSprites:
-  - {fileID: -8957417502758971713, guid: ad49128c08bf49c439be72496948209e, type: 3}
-  - {fileID: 1406045904528171565, guid: ad49128c08bf49c439be72496948209e, type: 3}
-  - {fileID: -2558150937358776449, guid: ad49128c08bf49c439be72496948209e, type: 3}
-  - {fileID: -7202806311537609114, guid: ad49128c08bf49c439be72496948209e, type: 3}
+  - {fileID: -6568108454402655828, guid: 02a4406859fe1fd4196fb9f542ec08db, type: 3}
+  - {fileID: -2059288165515247982, guid: 02a4406859fe1fd4196fb9f542ec08db, type: 3}
+  - {fileID: -2704784402443927896, guid: 02a4406859fe1fd4196fb9f542ec08db, type: 3}
+  - {fileID: 9100851887447186254, guid: 02a4406859fe1fd4196fb9f542ec08db, type: 3}
   _tileSprites:
   - {fileID: 1807125258617374038, guid: db5fc95b391f55c4b8b5eb15b5256557, type: 3}
   - {fileID: -6307998717725115482, guid: db5fc95b391f55c4b8b5eb15b5256557, type: 3}

@@ -19,7 +19,7 @@ public class TileControllerScript : MonoBehaviour
     void Update()
     {
         if (_data != null) {
-            GetComponent<SpriteRenderer>().sprite = _sLib.GetTileSpriteByIndex(0);
+            GetComponent<SpriteRenderer>().sprite = _sLib.GetTileSpriteByIndex((int)_data._structure._type);
         }
     }
 

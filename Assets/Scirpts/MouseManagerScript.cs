@@ -21,6 +21,7 @@ public class MouseManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // "Zoom" selected chunk
         if (Input.GetKeyDown(KeyCode.Mouse0) && _state._isSelecting) {
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
