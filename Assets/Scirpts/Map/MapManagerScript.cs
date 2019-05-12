@@ -39,23 +39,24 @@ public class MapManagerScript : MonoBehaviour
             for (int y = 0; y < _chunkHeightAndWidth; y++)
             {
                 var go = Instantiate(_mapChunkPrefab, new Vector3Int(_mapChunks[x, y]._x, _mapChunks[x, y]._y, 0), Quaternion.identity, transform);
-                var chunkController = go.GetComponent<MapChunkController>()._chunkData = _mapChunks[x, y];
+                var chunk = go.GetComponent<MapChunkController>();
+                chunk._chunkData = _mapChunks[x, y];
 
                 _mapChunkControllers[x, y] = go;
 
                 if (x == 0 || y == 0 || x == _chunkHeightAndWidth -1 || y == _chunkHeightAndWidth - 1)
                 {
-                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.MonsterSpawner);
+                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.MonsterSpawner);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.MonsterSpawner);
                 }
                 else if(x == _chunkHeightAndWidth / 2 && y == _chunkHeightAndWidth / 2)
                 {
-                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.Initial);
+                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Initial);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.Initial);
                 }
                 else
                 {
-                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetSpriteByIndex((int)Enums.MapChunkType.Empty_Buildable);
+                    go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Empty_Buildable);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.Empty_Buildable);
                 }
             }

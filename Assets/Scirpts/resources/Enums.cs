@@ -14,4 +14,9 @@
         Struture = 1
     }
 
+    public enum StructureType {
+        Spawner = 0,
+        Warfare = 1
+    }
+
 }

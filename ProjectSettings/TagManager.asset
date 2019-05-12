@@ -48,6 +48,12 @@ TagManager:
   - name: Map
     uniqueID: 930605697
     locked: 0
+  - name: Chunk
+    uniqueID: 2240769675
+    locked: 0
+  - name: Tile
+    uniqueID: 3646820483
+    locked: 0
   - name: Mouse
     uniqueID: 23034037
     locked: 0

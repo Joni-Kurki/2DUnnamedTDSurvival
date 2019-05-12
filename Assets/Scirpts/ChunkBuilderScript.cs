@@ -53,7 +53,7 @@ public class ChunkBuilderScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0) && _validBuild && chunk != null)
                 {
                     var go = _map.GetMapChunkControllerAt(x, y);
-                    go.GetComponent<SpriteRenderer>().sprite = _map._sLib.GetSpriteByIndex((int)Enums.MapChunkType.Initial);
+                    go.GetComponent<SpriteRenderer>().sprite = _map._sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Initial);
                     go.GetComponent<MapChunkController>()._chunkData._chunkType = Enums.MapChunkType.Initial;
                 }
             }

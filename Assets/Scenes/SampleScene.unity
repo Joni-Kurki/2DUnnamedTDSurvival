@@ -363,7 +363,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 23034037
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: af2c80a4f1774cd4b99dd4d9d8a1a9a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -539,11 +539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a101480e949800b4782057952b2a901e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites:
+  _chunkSprites:
   - {fileID: -8957417502758971713, guid: ad49128c08bf49c439be72496948209e, type: 3}
   - {fileID: 1406045904528171565, guid: ad49128c08bf49c439be72496948209e, type: 3}
   - {fileID: -2558150937358776449, guid: ad49128c08bf49c439be72496948209e, type: 3}
   - {fileID: -7202806311537609114, guid: ad49128c08bf49c439be72496948209e, type: 3}
+  _tileSprites:
+  - {fileID: 1807125258617374038, guid: db5fc95b391f55c4b8b5eb15b5256557, type: 3}
+  - {fileID: -6307998717725115482, guid: db5fc95b391f55c4b8b5eb15b5256557, type: 3}
 --- !u!4 &1701439261
 Transform:
   m_ObjectHideFlags: 0

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpriteLibraryScript : MonoBehaviour
 {
-    public Sprite[] _sprites;
+    public Sprite[] _chunkSprites;
+    public Sprite[] _tileSprites;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,12 @@ public class SpriteLibraryScript : MonoBehaviour
         
     }
 
-    public Sprite GetSpriteByIndex(int index)
+    public Sprite GetChunkSpriteByIndex(int index)
     {
-        return _sprites[index];
+        return _chunkSprites[index];
+    }
+
+    public Sprite GetTileSpriteByIndex(int index) {
+        return _tileSprites[index];
     }
 }
