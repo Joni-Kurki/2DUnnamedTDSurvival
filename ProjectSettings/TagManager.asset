@@ -54,6 +54,9 @@ TagManager:
   - name: Tile
     uniqueID: 3646820483
     locked: 0
+  - name: Spawn
+    uniqueID: 4039354013
+    locked: 0
   - name: Mouse
     uniqueID: 23034037
     locked: 0

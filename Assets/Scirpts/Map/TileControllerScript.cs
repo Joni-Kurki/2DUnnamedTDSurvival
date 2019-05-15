@@ -25,5 +25,8 @@ public class TileControllerScript : MonoBehaviour
 
     public void SetTileData(MapTileData data) {
         _data = data;
+
+        if (_data._structure._type == Enums.StructureType.Spawner && _data._type == Enums.MapTileType.Struture)
+            GetComponent<SpawnerScript>().enabled = true;
     }
 }
