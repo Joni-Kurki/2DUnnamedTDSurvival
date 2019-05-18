@@ -54,6 +54,7 @@ public class ChunkBuilderScript : MonoBehaviour
                     var go = _map.GetMapChunkControllerAt(x, y);
                     go.GetComponent<SpriteRenderer>().sprite = _map._sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Initial);
                     go.GetComponent<MapChunkController>()._chunkData._chunkType = Enums.MapChunkType.Initial;
+                    go.tag = Constants.TAG_PLAYER_CHUNK;
                 }
             }
 

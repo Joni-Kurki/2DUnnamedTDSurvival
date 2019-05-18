@@ -39,7 +39,9 @@ public class SpawnerScript : MonoBehaviour
 
     void SpawnMob()
     {
-        var enemy = Instantiate(_spawnPrefab, transform.position, Quaternion.identity, transform);
+        var spawnerGo = GameObject.FindGameObjectWithTag(Constants.TAG_SPAWNER_SPAWNS).transform;
+
+        var enemy = Instantiate(_spawnPrefab, transform.position, Quaternion.identity, spawnerGo);
         enemy.GetComponent<SpawnController>().SetSprite(_sLib.GetTileSpriteByIndex(2));
     }
 }

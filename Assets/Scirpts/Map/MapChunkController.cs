@@ -70,6 +70,9 @@ public class MapChunkController : MonoBehaviour
 
             var go = Instantiate(_tilePrefab, tileLoc, Quaternion.identity, transform);
             go.GetComponent<TileControllerScript>().SetTileData(_tileData[x, y]);
+
+            if (sType == Enums.StructureType.Warfare)
+                go.tag = Constants.TAG_PLAYER_TILE;
         }
     }
 }

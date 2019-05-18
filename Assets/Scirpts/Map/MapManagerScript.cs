@@ -48,11 +48,13 @@ public class MapManagerScript : MonoBehaviour
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.MonsterSpawner);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.MonsterSpawner);
+                    go.tag = Constants.TAG_SPAWNER_CHUNK;
                 }
                 else if(x == _chunkHeightAndWidth / 2 && y == _chunkHeightAndWidth / 2)
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Initial);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.Initial);
+                    go.tag = Constants.TAG_PLAYER_CHUNK;
                 }
                 else
                 {

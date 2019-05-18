@@ -19,4 +19,12 @@
         Warfare = 1
     }
 
+    public enum SpawnState
+    {
+        DoNothing = 0, 
+        LookForTarget = 1,
+        MoveToTarget = 2,
+        DamageTarget = 3
+    }
+
 }

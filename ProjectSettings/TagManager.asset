@@ -8,6 +8,10 @@ TagManager:
   - ChunkBuilder
   - MapManager
   - StateManager
+  - PlayerChunk
+  - SpawnerChunk
+  - PlayerTile
+  - SpawnerSpawns
   layers:
   - Default
   - TransparentFX
