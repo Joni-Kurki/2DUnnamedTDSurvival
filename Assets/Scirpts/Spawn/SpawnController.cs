@@ -14,14 +14,17 @@ public class SpawnController : MonoBehaviour
     [SerializeField]
     public float _wakeUpTime;
 
-    // TODO from data
+    public SpawnData _data = null;
+
+    // TODO: this is from data
     [SerializeField]
-    public float _moveSpeed = 1f;
+    public float _moveSpeed = 0f;
 
     [SerializeField]
     public Vector2 _direction;
 
     private bool _wokenUp = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,36 +35,53 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If the spawn has awoken
         if(Time.time >= _wakeUpTime && !_wokenUp)
         {
             _state = Enums.SpawnState.LookForTarget;
             _wokenUp = true;
         }
-
-        if(_state == Enums.SpawnState.LookForTarget)
+        // If spawner data has been set
+        if (_data != null)
         {
-            GetTarget();
-        }
-        else if(_state == Enums.SpawnState.MoveToTarget)
-        {
-            if(_currentTargetGo.activeInHierarchy == false) _state = Enums.SpawnState.LookForTarget;
+            if (_state == Enums.SpawnState.LookForTarget)
+            {
+                GetTarget();
+            }
+            else if (_state == Enums.SpawnState.MoveToTarget)
+            {
+                // If current target has not been destroyed already.
+                if (_currentTargetGo.activeInHierarchy == false) _state = Enums.SpawnState.LookForTarget;
 
-            if(Vector2.Distance(transform.position, _currentTargetGo.transform.position) >= .25f)
-                MoveToTarget();
-        }
-        else if (_state == Enums.SpawnState.DamageTarget)
-        {
-            if (_currentTargetGo == null) _state = Enums.SpawnState.LookForTarget;
+                // If spawn is not next to target
+                if (Vector2.Distance(transform.position, _currentTargetGo.transform.position) >= _data._range)
+                    MoveToTarget();
+                else
+                    _state = Enums.SpawnState.DamageTarget;
+            }
+            else if (_state == Enums.SpawnState.DamageTarget)
+            {
+                // If current target has not been destroyed already.
+                if (_currentTargetGo.activeInHierarchy == false) _state = Enums.SpawnState.LookForTarget;
 
-            DamageTarget(_currentTargetGo);
+                DamageTarget(_currentTargetGo);
+            }
         }
     }
 
+    // TODO: Merge these setters?
     public void SetSprite(Sprite sprite)
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
     }
-
+    // TODO: Merge these setters?
+    public void SetSpawnData(SpawnData data)
+    {
+        _data = data;
+        _moveSpeed = _data._speed;
+    }
+    
+    // Gets clsoest target with tag "PlayerTile"
     public void GetTarget()
     {
         var allTargets = GameObject.FindGameObjectsWithTag(Constants.TAG_PLAYER_TILE);
@@ -86,6 +106,7 @@ public class SpawnController : MonoBehaviour
             _state = Enums.SpawnState.MoveToTarget;
     }
 
+    // Moves towards target with normalized speed
     public void MoveToTarget()
     {
         // DOESNT LOOK FOR CHILD (warfare tile) COMPONENT YET
@@ -97,8 +118,9 @@ public class SpawnController : MonoBehaviour
         gameObject.transform.Translate(_direction.normalized * _moveSpeed * Time.deltaTime, Space.World);
     }
 
+    // Damages target
     public void DamageTarget(GameObject target)
     {
-
+        _currentTargetGo.GetComponent<TileControllerScript>().TakeDamage(_data._damage);
     }
 }

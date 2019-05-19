@@ -1,5 +1,4 @@
-﻿
-public class MapTileData {
+﻿public class MapTileData {
 
     public int _x { get; set; } 
     public int _y { get; set; }

@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8540a844e1665144b83d458b00e8c324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chunkHeightAndWidth: 9
+  _chunkHeightAndWidth: 13
   _mapChunkPrefab: {fileID: 2517487099124613707, guid: 2bec298a83bce9f40bc6daabfe3a2ab2,
     type: 3}
   _sLib: {fileID: 0}

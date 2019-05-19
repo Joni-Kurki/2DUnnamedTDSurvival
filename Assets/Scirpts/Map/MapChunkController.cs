@@ -62,7 +62,7 @@ public class MapChunkController : MonoBehaviour
         // Check if tile is empty
         if (_tileData[x, y]._type == Enums.MapTileType.Empty) {
             _tileData[x, y]._type = Enums.MapTileType.Struture;
-            _tileData[x, y]._structure = new StructureData(sType);
+            _tileData[x, y]._structure = StoreService.GetStructureData(sType);
 
             const float offset = .33f;
             // TODO : fix for aligning tiles correctly because of sprite pivot is middle
@@ -71,8 +71,11 @@ public class MapChunkController : MonoBehaviour
             var go = Instantiate(_tilePrefab, tileLoc, Quaternion.identity, transform);
             go.GetComponent<TileControllerScript>().SetTileData(_tileData[x, y]);
 
+            // If player tile, set appropriate tag
             if (sType == Enums.StructureType.Warfare)
+            {
                 go.tag = Constants.TAG_PLAYER_TILE;
+            }
         }
     }
 }

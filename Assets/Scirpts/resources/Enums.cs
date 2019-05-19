@@ -27,4 +27,27 @@
         DamageTarget = 3
     }
 
+    public enum SpawnType
+    {
+        Normal = 0,
+        Tank = 1,
+        Runner = 2,
+        Flyer = 3,
+    }
+
+    public enum RangeType
+    {
+        Melee = 0,
+        Ranged = 1
+    }
+
+    public enum SpawnElement
+    {
+        NoElement = 0,
+        Fire = 1,
+        Water = 2,
+        Air = 3,
+        Earth = 4
+    }
+
 }

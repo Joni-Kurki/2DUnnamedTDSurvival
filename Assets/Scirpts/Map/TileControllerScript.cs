@@ -9,6 +9,9 @@ public class TileControllerScript : MonoBehaviour
 
     bool _dataSet = false;
 
+    [SerializeField]
+    public float _currentHp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +24,22 @@ public class TileControllerScript : MonoBehaviour
         if (_data != null) {
             GetComponent<SpriteRenderer>().sprite = _sLib.GetTileSpriteByIndex((int)_data._structure._type);
         }
+
+        if (_currentHp <= 0)
+            gameObject.SetActive(false);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        _currentHp -= amount;
     }
 
     public void SetTileData(MapTileData data) {
         _data = data;
 
+        _currentHp = _data._structure._hp;
+
+        // If is spawner, enable spawner script
         if (_data._structure._type == Enums.StructureType.Spawner && _data._type == Enums.MapTileType.Struture)
             GetComponent<SpawnerScript>().enabled = true;
     }

@@ -15,11 +15,14 @@ public class SpawnerScript : MonoBehaviour
 
     SpriteLibraryScript _sLib;
 
+    public Enums.SpawnType _spawnType;
+
     // Start is called before the first frame update
     void Start()
     {
         _sLib = GameObject.FindGameObjectWithTag(Constants.TAG_SPRITE_LIBRARY).GetComponent<SpriteLibraryScript>();
         StartCoroutine(SpawnWave());
+        _spawnType = (Enums.SpawnType)Random.Range(0, 5);
     }
 
     // Update is called once per frame
@@ -42,6 +45,8 @@ public class SpawnerScript : MonoBehaviour
         var spawnerGo = GameObject.FindGameObjectWithTag(Constants.TAG_SPAWNER_SPAWNS).transform;
 
         var enemy = Instantiate(_spawnPrefab, transform.position, Quaternion.identity, spawnerGo);
+        enemy.GetComponent<SpawnController>().SetSpawnData(StoreService.GetSpawnData(_spawnType));
+
         enemy.GetComponent<SpawnController>().SetSprite(_sLib.GetTileSpriteByIndex(2));
     }
 }
