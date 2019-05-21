@@ -10,13 +10,15 @@ public class StateManagerScript : MonoBehaviour
 
     public bool _isZoomedToChunk = false;
 
-    ChunkBuilderScript _builder;
+    ChunkBuilderScript _cBuilder;
+    TileBuilderScript _tBuilder;
     CameraMoverScript _camera;
 
     // Start is called before the first frame update
     void Start()
     {
-        _builder = GameObject.FindGameObjectWithTag(Constants.TAG_CHUNK_BUILDER).GetComponent<ChunkBuilderScript>();
+        _cBuilder = GameObject.FindGameObjectWithTag(Constants.TAG_CHUNK_BUILDER).GetComponent<ChunkBuilderScript>();
+        _tBuilder = GameObject.FindGameObjectWithTag(Constants.TAG_TILE_BUILDER).GetComponent<TileBuilderScript>();
         _camera = GameObject.FindGameObjectWithTag(Constants.TAG_MAIN_CAMERA).GetComponent<CameraMoverScript>();
     }
 
@@ -32,12 +34,14 @@ public class StateManagerScript : MonoBehaviour
         _isBuilding = isBuilding;
         _isSelecting = !isBuilding;
 
-        _builder._isEnabled = _isBuilding;
+        _cBuilder._isEnabled = _isBuilding;
+        _tBuilder._isEnabled = !_isBuilding;
         SetBuilderEnabled(_isBuilding);
     }
 
     private void SetBuilderEnabled(bool enabled) {
-        _builder.gameObject.SetActive(enabled);
+        _cBuilder.gameObject.SetActive(enabled);
+        _tBuilder.gameObject.SetActive(!enabled);
         _camera.SetInitialPosition();
     }
 }

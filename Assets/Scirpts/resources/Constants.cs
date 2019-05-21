@@ -3,6 +3,7 @@
     #region TAGS
     public const string TAG_SPRITE_LIBRARY = "SpriteLibrary";
     public const string TAG_CHUNK_BUILDER = "ChunkBuilder";
+    public const string TAG_TILE_BUILDER = "TileBuilder";
     public const string TAG_MAP_MANAGER = "MapManager";
     public const string TAG_STATE_MANAGER = "StateManager";
     public const string TAG_MAIN_CAMERA = "MainCamera";

@@ -60,8 +60,8 @@ public class MapChunkController : MonoBehaviour
     // Sets selected tile to structure with desired type
     public void SetTileToStructureAt(int x, int y, Enums.StructureType sType) {
         // Check if tile is empty
-        if (_tileData[x, y]._type == Enums.MapTileType.Empty) {
-            _tileData[x, y]._type = Enums.MapTileType.Struture;
+        if (_tileData[x, y]._state == Enums.MapTileState.Empty) {
+            _tileData[x, y]._state = Enums.MapTileState.Struture;
             _tileData[x, y]._structure = StoreService.GetStructureData(sType);
 
             const float offset = .33f;

@@ -25,8 +25,12 @@ public class TileControllerScript : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = _sLib.GetTileSpriteByIndex((int)_data._structure._type);
         }
 
+        // Tile died
         if (_currentHp <= 0)
+        {
+            _data._state = Enums.MapTileState.Empty;
             gameObject.SetActive(false);
+        }
     }
 
     public void TakeDamage(float amount)
@@ -40,7 +44,7 @@ public class TileControllerScript : MonoBehaviour
         _currentHp = _data._structure._hp;
 
         // If is spawner, enable spawner script
-        if (_data._structure._type == Enums.StructureType.Spawner && _data._type == Enums.MapTileType.Struture)
+        if (_data._structure._type == Enums.StructureType.Spawner && _data._state == Enums.MapTileState.Struture)
             GetComponent<SpawnerScript>().enabled = true;
     }
 }

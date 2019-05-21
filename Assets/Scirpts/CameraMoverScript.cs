@@ -17,10 +17,14 @@ public class CameraMoverScript : MonoBehaviour
     bool zoom = true;
     private float targetZoom;
 
+    StateManagerScript _state;
+    ChunkBuilderMouseAnimation _animation;
     // Start is called before the first frame update
     void Start()
     {
         _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();
+        _state = GameObject.FindGameObjectWithTag(Constants.TAG_STATE_MANAGER).GetComponent<StateManagerScript>();
+        _animation = GameObject.FindGameObjectWithTag(Constants.TAG_CHUNK_BUILDER).GetComponent<ChunkBuilderMouseAnimation>();
         _camera = GetComponent<Camera>();
         targetZoom = INITIALSIZE;
         SetInitialPosition();
@@ -42,14 +46,18 @@ public class CameraMoverScript : MonoBehaviour
 
         transform.position = new Vector3(xy, xy, -10);
         targetZoom = INITIALSIZE;
+        _state._isZoomedToChunk = false;
         zoom = true;
+        _animation._playAnimation = true;
         //_camera.orthographicSize = INITIALSIZE;
     }
 
     public void SetZoomedPosition(Vector3 pos) {
         transform.position = pos;
         targetZoom = ZOOMEDSIZE;
+        _state._isZoomedToChunk = true;
         zoom = true;
+        _animation._playAnimation = false;
         //_camera.orthographicSize = ZOOMEDSIZE;
     }
 

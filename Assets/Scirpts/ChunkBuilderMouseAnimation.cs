@@ -13,7 +13,9 @@ public class ChunkBuilderMouseAnimation : MonoBehaviour
     const float _minSize = .65f;
     
     private float _lastCheck;
+    public bool _playAnimation = true;
     private bool _isScalingDown = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,7 @@ public class ChunkBuilderMouseAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isEnabled && (Time.time > _lastCheck + _animationTickThreshold))
+        if (_isEnabled && (Time.time > _lastCheck + _animationTickThreshold) && _playAnimation)
         {
             if (_isScalingDown)
             {

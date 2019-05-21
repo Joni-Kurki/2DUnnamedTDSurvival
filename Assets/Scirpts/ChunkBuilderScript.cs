@@ -13,11 +13,13 @@ public class ChunkBuilderScript : MonoBehaviour
     const float MOUSE_OFFSET = 0;
 
     MapManagerScript _map;
+    StateManagerScript _stateManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();     
+        _map = GameObject.FindGameObjectWithTag(Constants.TAG_MAP_MANAGER).GetComponent<MapManagerScript>();
+        _stateManager = GameObject.FindGameObjectWithTag(Constants.TAG_STATE_MANAGER).GetComponent<StateManagerScript>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,6 @@ public class ChunkBuilderScript : MonoBehaviour
             // If mouse is within game area
             if (x >= 0 && y >= 0 && x < _map._chunkHeightAndWidth && y < _map._chunkHeightAndWidth)
             {
-
                 var chunk = _map.GetChunkAt(Mathf.RoundToInt(point.x), Mathf.RoundToInt(point.y));
 
                 // Check chunks type
@@ -48,7 +49,7 @@ public class ChunkBuilderScript : MonoBehaviour
                     _validBuild = true;
                 }
 
-                // If can build
+                // If can build and clicked
                 if (Input.GetKeyDown(KeyCode.Mouse0) && _validBuild && chunk != null)
                 {
                     var go = _map.GetMapChunkControllerAt(x, y);
@@ -64,6 +65,7 @@ public class ChunkBuilderScript : MonoBehaviour
             else
                 transform.GetComponent<SpriteRenderer>().material.color = new Color(225, 0, 0, .7f);
         }
+
     }
 
     void OnDisable() {

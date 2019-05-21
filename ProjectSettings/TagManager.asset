@@ -12,6 +12,7 @@ TagManager:
   - SpawnerChunk
   - PlayerTile
   - SpawnerSpawns
+  - TileBuilder
   layers:
   - Default
   - TransparentFX
