@@ -45,6 +45,13 @@ public class TileControllerScript : MonoBehaviour
 
         // If is spawner, enable spawner script
         if (_data._structure._type == Enums.StructureType.Spawner && _data._state == Enums.MapTileState.Struture)
-            GetComponent<SpawnerScript>().enabled = true;
+            GetComponent<SpawnerTileScript>().enabled = true;
+
+        if (_data._structure._type == Enums.StructureType.Warfare && _data._state == Enums.MapTileState.Struture)
+        {
+            var warTile = GetComponent<WarfareTileScript>();
+            warTile.enabled = true;
+            warTile.SetWarfareData(StoreService.GetWarfareData(Enums.WarfareType.NormalTower));
+        }
     }
 }

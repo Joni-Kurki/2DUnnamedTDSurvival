@@ -25,6 +25,8 @@ public class SpawnController : MonoBehaviour
 
     private bool _wokenUp = false;
 
+    [SerializeField]
+    public float _hp;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,11 @@ public class SpawnController : MonoBehaviour
                 DamageTarget(_currentTargetGo);
             }
         }
+
+        if(_hp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // TODO: Merge these setters?
@@ -79,6 +86,7 @@ public class SpawnController : MonoBehaviour
     {
         _data = data;
         _moveSpeed = _data._speed;
+        _hp = _data._hp;
     }
     
     // Gets clsoest target with tag "PlayerTile"
@@ -122,5 +130,10 @@ public class SpawnController : MonoBehaviour
     public void DamageTarget(GameObject target)
     {
         _currentTargetGo.GetComponent<TileControllerScript>().TakeDamage(_data._damage);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _hp -= damage;
     }
 }

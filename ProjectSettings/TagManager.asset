@@ -13,6 +13,7 @@ TagManager:
   - PlayerTile
   - SpawnerSpawns
   - TileBuilder
+  - Spawn
   layers:
   - Default
   - TransparentFX

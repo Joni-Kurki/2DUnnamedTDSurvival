@@ -34,7 +34,7 @@ public class MapChunkController : MonoBehaviour
     {
         // Checks if tiles need to be refreshed again.
         if (_chunkData != null && _chunkData._chunkType == Enums.MapChunkType.MonsterSpawner && !_tilesUpdated) {
-            for (int x = 0; x < 3; x++) {
+            for (int x = 0; x < 1; x++) {
                     var rX = Random.Range(0, 3);
                     var rY = Random.Range(0, 3);
 

@@ -50,4 +50,18 @@
         Earth = 4
     }
 
+    public enum WarfareType
+    {
+        NormalTower = 0,
+        QuickTower = 1,
+        FatTower = 2
+    }
+
+    public enum WarfareState
+    {
+        Idle = 0,
+        LookForTargetInRange = 1,
+        Shoot = 2,
+    }
+
 }

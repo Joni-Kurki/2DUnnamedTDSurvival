@@ -16,6 +16,13 @@ public static class StoreService
         new StructureData(Enums.StructureType.Warfare,  20)
     };
 
+    private static List<WarfareData> _warfareData = new List<WarfareData>
+    {
+        //              SPEED   DAMAGE  RANGE   CANATTACKFLYING
+        new WarfareData(.8f,    3f,     1.5f,   false),
+        new WarfareData(1f,     3f,     2f,     false),
+    };
+
     private static List<SpawnData> _spawnsData = new List<SpawnData>
     {
         //            ELEMENT                       TYPE                        RANGETYPE                   HP      DAMAGE  SPEED   RANGE
@@ -29,6 +36,11 @@ public static class StoreService
     public static StructureData GetStructureData(Enums.StructureType type)
     {
         return _structuresData[(int)type];
+    }
+
+    public static WarfareData GetWarfareData(Enums.WarfareType type)
+    {
+        return _warfareData[(int)type];
     }
 
     public static SpawnData GetSpawnData(Enums.SpawnType type)

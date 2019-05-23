@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1669037871500889049}
   - component: {fileID: 1669037871500889048}
   - component: {fileID: -3219367758185341184}
+  - component: {fileID: -8976413575339986043}
   m_Layer: 0
   m_Name: SpawnableTile
   m_TagString: Untagged
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0956659c6af441bb613609cce5825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHp: 0
 --- !u!114 &-3219367758185341184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,4 +110,19 @@ MonoBehaviour:
   _numberOfEnemiesPerWave: 5
   _enemySpawnInterval: 2
   _spawnPrefab: {fileID: 4557598549265601649, guid: d6636ecf43e77324785d5ef4bc5b237f,
+    type: 3}
+  _spawnType: 0
+--- !u!114 &-8976413575339986043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669037871500889051}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732c187d6e46bed46b5de1c27ec6c5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _linePrefab: {fileID: 720874489669742123, guid: 3f86ba301a76f55469e70113d9d3fd11,
     type: 3}

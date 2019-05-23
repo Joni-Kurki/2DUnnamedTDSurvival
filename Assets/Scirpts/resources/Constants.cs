@@ -11,5 +11,6 @@
     public const string TAG_PLAYER_CHUNK = "PlayerChunk";
     public const string TAG_PLAYER_TILE = "PlayerTile";
     public const string TAG_SPAWNER_SPAWNS = "SpawnerSpawns";
+    public const string TAG_SPAWN = "Spawn";
     #endregion
 }

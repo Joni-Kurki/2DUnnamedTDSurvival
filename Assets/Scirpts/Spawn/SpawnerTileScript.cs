@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerScript : MonoBehaviour
+public class SpawnerTileScript : MonoBehaviour
 {
     [SerializeField]
     public int _numberOfEnemiesPerWave;

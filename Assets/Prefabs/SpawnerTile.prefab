@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49deb6225a7a9a946a00b7a4ce791810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfEnemiesPerWave: 5
+  _numberOfEnemiesPerWave: 1
   _enemySpawnInterval: 1
   _spawnPrefab: {fileID: 4557598549265601649, guid: d6636ecf43e77324785d5ef4bc5b237f,
     type: 3}
+  _spawnType: 0
