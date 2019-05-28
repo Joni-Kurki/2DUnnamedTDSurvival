@@ -44,12 +44,13 @@ public class MapManagerScript : MonoBehaviour
 
                 _mapChunkControllers[x, y] = go;
 
+                // Set Borders to spawner chunks
                 if (x == 0 || y == 0 || x == _chunkHeightAndWidth -1 || y == _chunkHeightAndWidth - 1)
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.MonsterSpawner);
                     _mapChunks[x, y].SetMapChunkType(Enums.MapChunkType.MonsterSpawner);
                     go.tag = Constants.TAG_SPAWNER_CHUNK;
-                }
+                } // Check middle chunk to player start
                 else if(x == _chunkHeightAndWidth / 2 && y == _chunkHeightAndWidth / 2)
                 {
                     go.GetComponent<SpriteRenderer>().sprite = _sLib.GetChunkSpriteByIndex((int)Enums.MapChunkType.Initial);

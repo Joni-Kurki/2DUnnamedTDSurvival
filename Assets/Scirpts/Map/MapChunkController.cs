@@ -21,7 +21,6 @@ public class MapChunkController : MonoBehaviour
 
         for (int x = 0; x < CHUNKSIZE; x++) {
             for (int y = 0; y < CHUNKSIZE; y++) {
-                
                 _tileData[x,y] = new MapTileData(x, y);
             }
         }
@@ -35,17 +34,17 @@ public class MapChunkController : MonoBehaviour
         // Checks if tiles need to be refreshed again.
         if (_chunkData != null && _chunkData._chunkType == Enums.MapChunkType.MonsterSpawner && !_tilesUpdated) {
             for (int x = 0; x < 1; x++) {
-                    var rX = Random.Range(0, 3);
-                    var rY = Random.Range(0, 3);
+                    //var rX = Random.Range(0, 3);
+                    //var rY = Random.Range(0, 3);
 
-                    SetTileToStructureAt(rX, rY, Enums.StructureType.Spawner);
+                    //SetTileToStructureAt(rX, rY, Enums.StructureType.Spawner);
             }
             _tilesUpdated = true;
         } else if (_chunkData != null && _chunkData._chunkType == Enums.MapChunkType.Initial && !_tilesUpdated) {
-            var rX = Random.Range(0, 3);
-            var rY = Random.Range(0, 3);
+            //var rX = Random.Range(0, 3);
+            //var rY = Random.Range(0, 3);
 
-            SetTileToStructureAt(rX, rY, Enums.StructureType.Warfare);
+            //SetTileToStructureAt(rX, rY, Enums.StructureType.Warfare);
 
             _tilesUpdated = true;
         }
@@ -77,5 +76,34 @@ public class MapChunkController : MonoBehaviour
                 go.tag = Constants.TAG_PLAYER_TILE;
             }
         }
+    }
+
+    public int NumberOfFreeTiles()
+    {
+        int num = 0;
+        for (int x = 0; x < CHUNKSIZE; x++)
+        {
+            for (int y = 0; y < CHUNKSIZE; y++)
+            {
+                if (_tileData[x, y]._state == Enums.MapTileState.Empty && _tileData[x, y]._structure == null)
+                    num++;
+            }
+        }
+        return num;
+    }
+
+    public MapTileData GetFreeTile()
+    {
+        MapTileData returnedTile = null;
+        for (int x = 0; x < CHUNKSIZE; x++)
+        {
+            for (int y = 0; y < CHUNKSIZE; y++)
+            {
+                if (_tileData[x, y]._state == Enums.MapTileState.Empty && _tileData[x, y]._structure == null)
+                    return _tileData[x, y];
+            }
+        }
+
+        return returnedTile;
     }
 }
