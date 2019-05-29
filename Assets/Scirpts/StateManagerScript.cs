@@ -26,6 +26,11 @@ public class StateManagerScript : MonoBehaviour
 
     MapManagerScript _map;
 
+    private bool _prevTBuilderState;
+    private bool _prevCBuilderState;
+
+    private bool _prevIsBuildingState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,5 +101,29 @@ public class StateManagerScript : MonoBehaviour
     private void UpdateWaveInfoText()
     {
         _waveInfoText.text = "Current wave: " + _waveNumber;
+    }
+
+    public void ToggleBuilders(bool isEnter)
+    {
+
+        _prevCBuilderState = _cBuilder.enabled;
+        _prevTBuilderState = _tBuilder.enabled;
+
+        _prevIsBuildingState = _isBuilding;
+
+        if (_isBuilding)
+        {
+            _cBuilder.gameObject.SetActive(false);
+            _tBuilder.gameObject.SetActive(false);
+
+            _isBuilding = false;
+        }
+        else
+        {
+            _cBuilder.gameObject.SetActive(_prevCBuilderState);
+            _tBuilder.gameObject.SetActive(_prevTBuilderState);
+
+            _isBuilding = true;
+        }
     }
 }

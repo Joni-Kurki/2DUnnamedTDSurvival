@@ -28,7 +28,8 @@ public class MouseManagerScript : MonoBehaviour
             var x = Mathf.RoundToInt(point.x);
             var y = Mathf.RoundToInt(point.y);
 
-            if (_map != null) {
+            // Check that mouse is at correct location
+            if (_map != null && x >= 0 && y >= 0 && x < (_map._chunkHeightAndWidth)-1 && y < (_map._chunkHeightAndWidth) - 1) {
                 var chunk = _map._mapChunks[x, y];
 
                 if (chunk != null && chunk._chunkType == Enums.MapChunkType.Initial) {

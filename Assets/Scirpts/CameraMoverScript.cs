@@ -7,7 +7,7 @@ public class CameraMoverScript : MonoBehaviour
     MapManagerScript _map;
     Vector3 _initialPosition;
 
-    private const float INITIALSIZE = 5f;
+    private float INITIALSIZE = 5f;
     private const float ZOOMEDSIZE = .75f;
 
     private float zoomLerpSpeed = 5f;
@@ -26,6 +26,10 @@ public class CameraMoverScript : MonoBehaviour
         _state = GameObject.FindGameObjectWithTag(Constants.TAG_STATE_MANAGER).GetComponent<StateManagerScript>();
         _animation = GameObject.FindGameObjectWithTag(Constants.TAG_CHUNK_BUILDER).GetComponent<ChunkBuilderMouseAnimation>();
         _camera = GetComponent<Camera>();
+
+        INITIALSIZE = (_map._chunkHeightAndWidth / 2f) + 1;
+        Debug.Log(INITIALSIZE);
+
         targetZoom = INITIALSIZE;
         SetInitialPosition();
     }

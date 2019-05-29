@@ -1,6 +1,7 @@
 ﻿/*-------------------------------------------------------------
  * Service which contains following data and can be called anywhere.
  * - SpawnData
+ * - WarfareData
  * - StructureData
  */
 
@@ -9,21 +10,21 @@ using System.Collections.Generic;
 
 public static class StoreService
 {
-    private static List<StructureData> _structuresData = new List<StructureData>
+    private static readonly List<StructureData> _structuresData = new List<StructureData>
     {
         //                TYPE                          HP
         new StructureData(Enums.StructureType.Spawner,  10000),
         new StructureData(Enums.StructureType.Warfare,  20)
     };
 
-    private static List<WarfareData> _warfareData = new List<WarfareData>
+    private static readonly List<WarfareData> _warfareData = new List<WarfareData>
     {
         //              SPEED   DAMAGE  RANGE   CANATTACKFLYING
         new WarfareData(.8f,    3f,     1.5f,   false),
         new WarfareData(1f,     3f,     2f,     false),
     };
 
-    private static List<SpawnData> _spawnsData = new List<SpawnData>
+    private static readonly List<SpawnData> _spawnsData = new List<SpawnData>
     {
         //            ELEMENT                       TYPE                        RANGETYPE                   HP      DAMAGE  SPEED   RANGE
         new SpawnData(Enums.SpawnElement.NoElement, Enums.SpawnType.Normal,     Enums.RangeType.Melee,      20,     3,      1,      .25f),
@@ -47,5 +48,4 @@ public static class StoreService
     {
         return _spawnsData[(int)type];
     }
-    
 }
